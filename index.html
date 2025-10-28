@@ -4,21 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OnClckAd Test</title>
+  <style>
+    #ad-container {
+      width: 300px;
+      height: 250px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Click the button to trigger an ad</h1>
-  <button id="adButton">Click Me</button>
+  <h1>OnClckAd Test Page</h1>
+  <p>Make sure ad blockers are disabled and test on a live server.</p>
+
+  <div id="ad-container"></div>
 
   <!-- OnClckAd script -->
   <script async src="https://js.onclckmn.com/static/onclicka.js" data-admpid="373327"></script>
 
   <script>
-    // Some OnClckAd scripts require a click event
-    document.getElementById('adButton').addEventListener('click', function() {
+    // Some OnClckAd scripts auto-render in a container
+    document.addEventListener('DOMContentLoaded', function () {
       if (window.OnClckAd) {
-        window.OnClckAd.showAd(); // Triggers the ad (if script loaded correctly)
+        window.OnClckAd.init({
+          container: 'ad-container'
+        });
       } else {
-        console.log('OnClckAd script not loaded yet');
+        console.log('OnClckAd not loaded yet');
       }
     });
   </script>
