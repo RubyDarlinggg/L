@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Page with OnClckAd</title>
+  <title>OnClckAd Test</title>
 </head>
 <body>
-  <h1>Welcome</h1>
-  <p>This page includes the OnClckAd script.</p>
+  <h1>Click the button to trigger an ad</h1>
+  <button id="adButton">Click Me</button>
 
   <!-- OnClckAd script -->
   <script async src="https://js.onclckmn.com/static/onclicka.js" data-admpid="373327"></script>
+
+  <script>
+    // Some OnClckAd scripts require a click event
+    document.getElementById('adButton').addEventListener('click', function() {
+      if (window.OnClckAd) {
+        window.OnClckAd.showAd(); // Triggers the ad (if script loaded correctly)
+      } else {
+        console.log('OnClckAd script not loaded yet');
+      }
+    });
+  </script>
 </body>
 </html>
